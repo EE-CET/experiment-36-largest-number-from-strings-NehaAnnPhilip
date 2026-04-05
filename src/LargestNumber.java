@@ -1,4 +1,8 @@
 
+
+
+import java.util.*;
+
 public class LargestNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -10,22 +14,14 @@ public class LargestNumber {
             arr[i] = sc.next();
         }
 
-        // Custom sorting
-        Arrays.sort(arr, new Comparator<String>() {
-            public int compare(String a, String b) {
-                String order1 = a + b;
-                String order2 = b + a;
-                return order2.compareTo(order1); // descending order
-            }
-        });
+        Arrays.sort(arr, (a, b) -> (b + a).compareTo(a + b));
 
-        // Build result
-        StringBuilder result = new StringBuilder();
-        for (String s : arr) {
-            result.append(s);
+        String result = "";
+        for (int i = 0; i < N; i++) {
+            result += arr[i];
         }
 
-        System.out.println(result.toString());
+        System.out.println(result);
 
         sc.close();
     }
